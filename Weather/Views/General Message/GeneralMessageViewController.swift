@@ -1,7 +1,7 @@
 //
 //  GeneralMessageViewController.swift
 //
-//  Created by Ricardo Casanova on 06/09/2018.
+//  06/09/2018.
 //
 
 import UIKit

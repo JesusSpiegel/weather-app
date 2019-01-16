@@ -2,8 +2,8 @@
 //  User.swift
 //  Weather
 //
-//  Created by Ricardo Casanova on 03/12/2018.
-//  Copyright © 2018 Pijp. All rights reserved.
+//  03/12/2018.
+//  Copyright © 2019 SCRM. All rights reserved.
 //
 
 import Foundation

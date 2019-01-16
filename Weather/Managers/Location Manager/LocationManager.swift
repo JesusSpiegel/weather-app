@@ -2,8 +2,8 @@
 //  LocationManager.swift
 //  Weather
 //
-//  Created by Ricardo Casanova on 02/09/2018.
-//  Copyright © 2018 Pijp Technologies S.L. All rights reserved.
+//  02/09/2018.
+//  Copyright © 2019 SCRM Technologies S.L. All rights reserved.
 //
 
 import Foundation

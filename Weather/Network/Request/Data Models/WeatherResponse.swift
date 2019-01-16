@@ -2,8 +2,8 @@
 //  RepoResponse.swift
 //  Weather
 //
-//  Created by Ricardo Casanova on 29/11/2018.
-//  Copyright © 2018 Pijp. All rights reserved.
+//  29/11/2018.
+//  Copyright © 2019 SCRM. All rights reserved.
 //
 
 import UIKit

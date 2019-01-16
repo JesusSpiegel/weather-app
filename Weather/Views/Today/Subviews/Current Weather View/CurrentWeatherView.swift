@@ -2,8 +2,8 @@
 //  CurrentWeatherView.swift
 //  Weather
 //
-//  Created by Ricardo Casanova on 01/12/2018.
-//  Copyright © 2018 Pijp. All rights reserved.
+//  01/12/2018.
+//  Copyright © 2019 SCRM. All rights reserved.
 //
 
 import UIKit

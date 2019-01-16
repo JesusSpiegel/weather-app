@@ -1,7 +1,7 @@
 //
 //  GeneralMessagePresenter.swift
 //
-//  Created by Ricardo Casanova on 07/09/2018.
+//  07/09/2018.
 //
 
 import Foundation
