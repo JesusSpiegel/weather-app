@@ -16,31 +16,8 @@ class TodayInteractor {
     
 }
 
-// MARK: - Private section
-extension TodayInteractor {
-    
-    private func getWeatherWith(latitude: CGFloat, longitude: CGFloat, completion: @escaping getWeatherCompletionBlock) {
-        var getWeatherRequest = WeatherRequest(latitude: latitude, longitude: longitude)
-        
-        getWeatherRequest.completion = completion
-        requestManager.send(request: getWeatherRequest)
-    }
-    
-    private func addInformationWithWeatherResponse(_ weatherResponse: WeatherResponse, location: CLLocationCoordinate2D) {
-        guard let weather = weatherResponse.list.first, let userId = getCurrenUserId() else {
-            return
-        }
-        RemoteDabaBaseManager.shared.addInformation(userId: userId, lastTemperature: weather.main.temp, latitude: location.latitude, longitude: location.longitude, countryCode: weatherResponse.city.country)
-    }
-    
-    private func getCurrenUserId() -> String? {
-        return LocalWeatherManager.shared.getCurrentUserId()
-    }
-    
-}
-
-// MARK: - TodayInteractorDelegate
-extension TodayInteractor: TodayInteractorDelegate {
+// MARK: - TodayInteractorInterface
+extension TodayInteractor: TodayInteractorInterface {
     
     func requestLocationAuthorizationIfNeeded() {
         LocationManager.shared.requestAuthorizationIfNeeded()
@@ -97,5 +74,28 @@ extension TodayInteractor: TodayInteractorDelegate {
         
         return false
     }
+    
+}
+
+// MARK: - Private section
+extension TodayInteractor {
+    
+    private func getWeatherWith(latitude: CGFloat, longitude: CGFloat, completion: @escaping getWeatherCompletionBlock) {
+        var getWeatherRequest = WeatherRequest(latitude: latitude, longitude: longitude)
         
+        getWeatherRequest.completion = completion
+        requestManager.send(request: getWeatherRequest)
+    }
+    
+    private func addInformationWithWeatherResponse(_ weatherResponse: WeatherResponse, location: CLLocationCoordinate2D) {
+        guard let weather = weatherResponse.list.first, let userId = getCurrenUserId() else {
+            return
+        }
+        RemoteDabaBaseManager.shared.addInformation(userId: userId, lastTemperature: weather.main.temp, latitude: location.latitude, longitude: location.longitude, countryCode: weatherResponse.city.country)
+    }
+    
+    private func getCurrenUserId() -> String? {
+        return LocalWeatherManager.shared.getCurrentUserId()
+    }
+    
 }

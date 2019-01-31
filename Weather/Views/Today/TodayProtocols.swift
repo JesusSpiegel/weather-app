@@ -9,12 +9,12 @@
 import Foundation
 
 // View / Presenter
-protocol TodayViewInjection : class {
+protocol TodayViewInterface : class {
     func loadWeatherInformationWithViewModel(_ viewModel: TodayViewModel)
     func showMessageWith(title: String, message: String, actionTitle: String)
 }
 
-protocol TodayPresenterDelegate : class {
+protocol TodayPresenterInterface : class {
     func viewDidLoad()
     func viewDidAppear()
 }
@@ -22,7 +22,7 @@ protocol TodayPresenterDelegate : class {
 // Presenter / Interactor
 typealias getWeatherInteractorCompletionBlock = (_ viewModel: TodayViewModel?, _ success: Bool, _ error: ResultError?) -> Void
 
-protocol TodayInteractorDelegate : class {
+protocol TodayInteractorInterface : class {
     func requestLocationAuthorizationIfNeeded()
     func getCurrentWeather(completion: @escaping getWeatherInteractorCompletionBlock)
     func getLocalWeatherInformation() -> TodayViewModel?

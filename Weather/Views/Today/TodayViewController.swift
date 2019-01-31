@@ -10,7 +10,7 @@ import UIKit
 
 class TodayViewController: BaseViewController {
     
-    public var presenter: TodayPresenterDelegate?
+    public var presenter: TodayPresenterInterface?
     
     private let scrollView: UIScrollView = UIScrollView()
     /**
@@ -124,8 +124,8 @@ extension TodayViewController {
     
 }
 
-// MARK: - TodayViewInjection
-extension TodayViewController: TodayViewInjection {
+// MARK: - TodayViewInterface
+extension TodayViewController: TodayViewInterface {
     
     func loadWeatherInformationWithViewModel(_ viewModel: TodayViewModel) {
         currentWeatherView.bindWithViewModel(viewModel)

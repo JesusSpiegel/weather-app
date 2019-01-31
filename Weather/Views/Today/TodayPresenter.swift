@@ -12,13 +12,20 @@ typealias getWeatherCompletionBlock = (Result<WeatherResponse?>) -> Void
 
 class TodayPresenter {
     
-    private weak var view: TodayViewInjection?
-    private let interactor: TodayInteractorDelegate
+    weak var view: TodayViewInterface?
+    var interactor: TodayInteractorInterface?
+}
+
+// MARK: - TodayPresenterInterface
+extension TodayPresenter: TodayPresenterInterface {
     
-    // MARK - Lifecycle
-    init(view: TodayViewInjection, navigationController: UINavigationController? = nil) {
-        self.view = view
-        self.interactor = TodayInteractor()
+    func viewDidLoad() {
+        validateLocalData()
+        registerInternalNotifications()
+    }
+    
+    func viewDidAppear() {
+        interactor?.requestLocationAuthorizationIfNeeded()
     }
     
 }
@@ -32,6 +39,11 @@ extension TodayPresenter {
     }
     
     @objc private func locationAllowed() {
+        
+        guard let interactor = interactor else {
+            return
+        }
+        
         if !interactor.shouldGetRemoteWeatherInformation() {
             return
         }
@@ -43,8 +55,8 @@ extension TodayPresenter {
         getCurrentWeatherInformation()
     }
     
-    private func getCurrentWeatherInformation() {
-        interactor.getCurrentWeather { [weak self] (viewModel, success, error) in
+    func getCurrentWeatherInformation() {
+        interactor?.getCurrentWeather { [weak self] (viewModel, success, error) in
             guard let `self` = self else { return }
             
             if let viewModel = viewModel {
@@ -65,6 +77,11 @@ extension TodayPresenter {
     }
     
     private func validateLocalData() {
+        
+        guard let interactor = interactor else {
+            return
+        }
+        
         if !interactor.shouldGetLocalWeatherInformation() { return }
         
         guard let viewModel = interactor.getLocalWeatherInformation() else {
@@ -72,20 +89,6 @@ extension TodayPresenter {
         }
         
         view?.loadWeatherInformationWithViewModel(viewModel)
-    }
-    
-}
-
-// MARK: - TodayPresenterDelegate
-extension TodayPresenter: TodayPresenterDelegate {
-    
-    func viewDidLoad() {
-        validateLocalData()
-        registerInternalNotifications()
-    }
-    
-    func viewDidAppear() {
-        interactor.requestLocationAuthorizationIfNeeded()
     }
     
 }
