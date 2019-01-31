@@ -19,7 +19,7 @@ private struct Url {
     
     static let baseUrl: String = "http://api.openweathermap.org/data/"
     static let version: String = "2.5"
-    static let appID: String = "ADD YOUR API ID HERE"
+    static let appID: String = "94c380f61e6aba8e8691fd33b572db55"
     
     struct Fields {
         static let latitude: String = "lat"
