@@ -109,7 +109,7 @@ DEPENDENCIES:
   - RealmSwift (~> 3.7.6)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - BoringSSL
     - CollectionViewCenteredFlowLayout
     - Firebase
@@ -155,4 +155,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: b006a47af51222821c7e46fc092004a141e48bed
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4
